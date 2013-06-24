@@ -1,9 +1,12 @@
 EaselJS & box2d.js
 ========
 
-This directory contains the same demo as EaselJS_Box2dWeb, but using the box2d.js port of Box2D: https://github.com/kripken/box2d.js
+This directory contains the same demo as EaselJS_Box2dWeb, but using the [box2d.js port of Box2D](https://github.com/kripken/box2d.js) instead of Box2DWeb.
 
 Compare index.html in this directory with index.html in EaselJS_Box2dWeb to see what changes need to be made.
+
+The files box2d.js, embox2d-helpers.js, and embox2d-html5canvas-debug.js are from [box2d.js](https://github.com/kripken/box2d.js) and are used under a zlib licence.
+
 
 
 EaselJS & Box2dWeb
