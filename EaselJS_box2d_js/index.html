@@ -157,10 +157,9 @@ function tick(evt) {
 		resetBall(addBall(0));
 	}
 
-	//	This loop uses iterCount < world.GetBodyCount() to work around bug with GetNext():
+	//	This loop uses [Module].getPointer() to work around the NULL issue:
 	//	https://github.com/kripken/box2d.js/issues/17
-	var iterCount = 0;
-	for (var body = world.GetBodyList(); body != null && (iterCount < world.GetBodyCount()); iterCount++, body = body.GetNext()) {
+	for (var body = world.GetBodyList(); b2d.getPointer(body) !== 0; body = body.GetNext()) {
 		var ball = body.userData;
 		if (!ball) { continue; }
 		var pt = body.GetPosition();
@@ -204,11 +203,9 @@ function boom(evt) {
 		ball1.body.SetTransform(new b2d.b2Vec2(x1, y1), a);
 	}
 
-	//	i < world.GetBodyCount() required to work around bug with GetNext():
+	//	This loop uses [Module].getPointer() to work around the NULL issue:
 	//	https://github.com/kripken/box2d.js/issues/17
-	var bodyCount = world.GetBodyCount();
-	var i = 0;
-	for (var body = world.GetBodyList(); body && i < bodyCount; i++, body = body.GetNext()) {
+	for (var body = world.GetBodyList(); b2d.getPointer(body) !== 0; body = body.GetNext()) {
 		ball = body.userData;
 		if (!ball) { continue; }
 		var bpt = body.GetPosition();
